@@ -154,7 +154,6 @@ const StarRating = ({ rating }: { rating: number }) => {
         <Star
           key={index}
           size={16}
-          sm={{ size: 20 }}
           className={index < rating ? "text-yellow-400 fill-yellow-400" : "text-gray-300"}
         />
       ))}
