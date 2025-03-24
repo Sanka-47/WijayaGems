@@ -2,17 +2,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Marcellus } from "next/font/google";
-import { Search, User, ShoppingBag, Menu, X } from "lucide-react"; // Import Lucide icons, including Menu and X for hamburger
-import { useState, useEffect } from "react"; // Import React hooks for carousel and menu toggle
+import { Search, User, ShoppingBag, Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
 
-// Font setup
 const mrc = Marcellus({
   weight: "400",
   subsets: ["latin"],
   display: "swap",
 });
 
-// Array of carousel images
 const carouselImages = [
   "/carousel/Web_Banner_2_1_540x.png",
   "/carousel/Web_Banner_2.png",
@@ -20,24 +18,18 @@ const carouselImages = [
 ];
 
 export default function Header() {
-  // State to track the current image index for the carousel
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  // State to toggle the mobile menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // useEffect to handle automatic image switching every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) =>
         prevIndex === carouselImages.length - 1 ? 0 : prevIndex + 1
       );
-    }, 3000); // 3 seconds interval
-
-    // Cleanup the interval on component unmount
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
-  // Function to toggle the mobile menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -64,72 +56,44 @@ export default function Header() {
               </button>
             </div>
 
-            {/* Navigation Links (Centered on Desktop, Hidden on Mobile when Menu is Closed) */}
+            {/* Navigation Links */}
             <ul
               className={`${
                 isMenuOpen ? "flex" : "hidden"
               } md:flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4 lg:space-x-6 flex-1 absolute md:static top-16 left-0 w-full md:w-auto bg-white md:bg-transparent p-4 md:p-0 z-10 shadow-md md:shadow-none transition-all duration-300 ease-in-out`}
             >
               <li>
-                <Link
-                  href="/new-in"
-                  className="hover:underline text-black text-sm sm:text-base"
-                  onClick={() => setIsMenuOpen(false)} // Close menu on link click
-                >
+                <Link href="/new-in" className="hover:underline text-black text-sm sm:text-base" onClick={() => setIsMenuOpen(false)}>
                   Home
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/earrings"
-                  className="hover:underline text-black text-sm sm:text-base"
-                  onClick={() => setIsMenuOpen(false)}
-                >
+                <Link href="/earrings" className="hover:underline text-black text-sm sm:text-base" onClick={() => setIsMenuOpen(false)}>
                   Shop
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/rings"
-                  className="hover:underline text-black text-sm sm:text-base"
-                  onClick={() => setIsMenuOpen(false)}
-                >
+                <Link href="/rings" className="hover:underline text-black text-sm sm:text-base" onClick={() => setIsMenuOpen(false)}>
                   BirthStones
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/rings"
-                  className="hover:underline text-black text-sm sm:text-base"
-                  onClick={() => setIsMenuOpen(false)}
-                >
+                <Link href="/rings" className="hover:underline text-black text-sm sm:text-base" onClick={() => setIsMenuOpen(false)}>
                   About Us
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/rings"
-                  className="hover:underline text-black text-sm sm:text-base"
-                  onClick={() => setIsMenuOpen(false)}
-                >
+                <Link href="/rings" className="hover:underline text-black text-sm sm:text-base" onClick={() => setIsMenuOpen(false)}>
                   Events
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/rings"
-                  className="hover:underline text-black text-sm sm:text-base"
-                  onClick={() => setIsMenuOpen(false)}
-                >
+                <Link href="/rings" className="hover:underline text-black text-sm sm:text-base" onClick={() => setIsMenuOpen(false)}>
                   Blog
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/rings"
-                  className="hover:underline text-black text-sm sm:text-base"
-                  onClick={() => setIsMenuOpen(false)}
-                >
+                <Link href="/rings" className="hover:underline text-black text-sm sm:text-base" onClick={() => setIsMenuOpen(false)}>
                   Contact Us
                 </Link>
               </li>
@@ -152,30 +116,32 @@ export default function Header() {
       </nav>
 
       {/* Carousel Section */}
-      <div className="relative h-64 sm:h-80 md:h-96 flex items-center justify-center">
-        {/* Carousel Images */}
-        <div className="relative w-full h-full">
+      <div className="relative w-full max-w-[calc(100%-2rem)] mx-auto h-48 sm:h-64 md:h-80 lg:h-96 overflow-hidden rounded-2xl shadow-md">
+        {/* Carousel Images Container */}
+        <div className="relative w-full h-full ">
           {carouselImages.map((image, index) => (
+            <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out overflow-hidden rounded-2xl ${
+              index === currentImageIndex ? "opacity-100" : "opacity-0"
+            }`}
+          >
             <Image
-              key={index}
               src={image}
               alt={`Header Background ${index + 1}`}
               layout="fill"
-              objectFit="cover"
+              objectFit="contain"
               objectPosition="center"
-              priority={index === 0} // Priority for the first image only
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                index === currentImageIndex ? "opacity-100" : "opacity-0"
-              }`}
+              priority={index === 0}
+              className="rounded-2xl md:object-fit-cover"
             />
+          </div>
           ))}
         </div>
 
         {/* Centered Logo */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <h1
-            className={`text-4xl sm:text-5xl md:text-6xl text-[#c9c0bb] tracking-widest ${mrc.className}`}
-          >
+          <h1 className={`text-4xl sm:text-5xl md:text-6xl text-[#c9c0bb] tracking-widest ${mrc.className}`}>
             WG
           </h1>
         </div>
