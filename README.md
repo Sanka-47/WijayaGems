@@ -1,4 +1,4 @@
-# Created A fresh home page design for wijaya gems usign React 
+# Created A fresh home page design for wijaya gems usign React - https://wijaya-gems.vercel.app 
 
 # Old Design-
 
