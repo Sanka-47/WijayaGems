@@ -11,5 +11,5 @@
 
 
 
-![Uploading wijaya-gems-vercel-app.png…]()
 
+![wijaya-gems-vercel-app](https://github.com/user-attachments/assets/2104cce0-3d25-411e-94c1-2301e36268f4)
