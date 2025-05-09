@@ -1,8 +1,10 @@
 # Created A fresh home page design for wijaya gems 
 # Technologies Used 
-NextJs 
-React 
-Tailwind CSS
+NextJs, 
+React, 
+Tailwind CSS,
+
+<br>
 Live - https://wijaya-gems.vercel.app 
 
 
