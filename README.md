@@ -1,5 +1,5 @@
 # Created A fresh home page design for wijaya gems 
-
+# Technologies Used 
 Live - https://wijaya-gems.vercel.app 
 
 
