@@ -4,8 +4,15 @@
 <ul> 
 <li>
   NextJs 
-React 
-Tailwind CSS
+
+</li>
+<li>
+  React
+
+</li>
+<li>
+  Tailwind CSS
+
 </li>
 </ul>
 
